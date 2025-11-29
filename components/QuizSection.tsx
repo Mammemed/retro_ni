@@ -152,8 +152,8 @@ export default function QuizSection({ onAnswerCorrect }: QuizSectionProps) {
         : '<span class="result-icon">✗</span> Mauvaise réponse'
     }
 
- if (explanation) {
-  const explanationText = questions[questionId - 1].explanation ?? null;
+if (explanation) {
+  const explanationText = questions[questionId - 1].explanation || '';
 
   if (explanationText) {
     explanation.style.display = 'block';
@@ -161,8 +161,9 @@ export default function QuizSection({ onAnswerCorrect }: QuizSectionProps) {
     explanation.style.display = 'none';
   }
 
-  explanation.textContent = explanationText; // type: string | null ✅
+  explanation.textContent = explanationText;
 }
+
 
 
     if (isCorrect) {

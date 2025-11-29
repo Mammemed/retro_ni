@@ -152,10 +152,18 @@ export default function QuizSection({ onAnswerCorrect }: QuizSectionProps) {
         : '<span class="result-icon">✗</span> Mauvaise réponse'
     }
 
-    if (explanation && questions[questionId - 1].explanation) {
-      explanation.style.display = 'block'
-      explanation.textContent = questions[questionId - 1].explanation
-    }
+ if (explanation) {
+  const explanationText = questions[questionId - 1].explanation ?? null;
+
+  if (explanationText) {
+    explanation.style.display = 'block';
+  } else {
+    explanation.style.display = 'none';
+  }
+
+  explanation.textContent = explanationText; // type: string | null ✅
+}
+
 
     if (isCorrect) {
       const points = 50
